@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Usizo_Beta.Models
 {
-    class Activite
+    public class Activite
     {
         public string UID { get; set; }
         public string Nom { get; set; }
