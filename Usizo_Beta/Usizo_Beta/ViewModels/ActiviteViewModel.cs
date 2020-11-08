@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Usizo_Beta.Models;
 using Usizo_Beta.Services;
+using Usizo_Beta.Views;
 using Xamarin.Forms;
 
 namespace Usizo_Beta.ViewModels
@@ -36,8 +37,14 @@ namespace Usizo_Beta.ViewModels
             Title = "Activités";
             _navigation = navigation;
             //_listActivities = new List<Activite>();
-
+            GoToDetails = new Command<string>(async (id) => await NavigateToDetails(id));
             //GetActivitiesList();
+        }
+
+        public ActiviteViewModel()
+        {
+            GoToDetails = new Command<string>(async (id) => await NavigateToDetails(id));
+            Title = "Activités";
         }
 
         //public async void GetActivitiesList()
@@ -46,9 +53,20 @@ namespace Usizo_Beta.ViewModels
         //    _listActivities = result.ToList();
         //}
 
-        public async Task NavigateToDetails()
+        public async Task NavigateToDetails(string id)
         {
-            return await _navigation.PushModalAsync();
+            //await Task.Delay(5000);
+            var result = ActiviteServices.ActiviteService.Activites();
+
+            try
+            {
+                await _navigation.PushModalAsync(new DetailPage(id));
+            }
+            catch (Exception e)
+            {
+                System.Diagnostics.Debug.WriteLine(e.Message);
+                throw;
+            }
         }
     }
 }

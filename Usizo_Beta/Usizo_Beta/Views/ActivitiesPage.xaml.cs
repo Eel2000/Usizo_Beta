@@ -18,7 +18,7 @@ namespace Usizo_Beta.Views
         public Activities()
         {
             InitializeComponent();
-            BindingContext = new ActiviteViewModel();
+            BindingContext = new ActiviteViewModel(Navigation);
             GetList();
         }
 

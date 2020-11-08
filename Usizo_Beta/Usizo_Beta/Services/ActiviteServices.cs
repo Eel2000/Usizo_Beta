@@ -75,5 +75,40 @@ namespace Usizo_Beta.Services
         {
             throw new NotImplementedException();
         }
+
+        public async Task<Activite> ActiviteDetails(string UID)
+        {
+            try
+            {
+                var activite = (await Firebase
+                .Child("activite")
+                .OnceAsync<Activite>())
+                .Where(a => a.Object.UID == UID)
+                .Select(item => new Activite()
+                {
+                    Nom = item.Object.Nom,
+                    Date = item.Object.Date,
+                    Encadreur = item.Object.Encadreur,
+                    Enfants = item.Object.Enfants,
+                    Lieu = item.Object.Lieu
+                }).FirstOrDefault();
+
+                var it = new Activite()
+                {
+                    Nom = activite.Nom,
+                    Date = activite.Date,
+                    Encadreur = activite.Encadreur,
+                    Enfants = activite.Enfants,
+                    Lieu = activite.Lieu
+                };
+
+                return it;
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                throw;
+            }
+        }
     }
 }

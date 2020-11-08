@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:Usizo_Beta.ViewModels" x:Name="Page"
              x:Class="Usizo_Beta.Views.Activities" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <local:ActiviteViewModel/>
+    </ContentPage.BindingContext>
 
     <Grid>
         <CollectionView x:Name="listActivites"
@@ -17,6 +21,7 @@
 
                         <StackLayout>
                             <Label Text="{Binding Nom}"/>
+                            <Label Text="{Binding Encadreur.Nom}"/>
                             <Label Text="{Binding Date}"/>
                         </StackLayout>
 
@@ -24,7 +29,9 @@
                             <Button Text="Details" 
                                     CornerRadius="10"
                                     FontAttributes="Bold"
-                                    Command=""/>
+                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.GoToDetails}"
+                                    CommandParameter="{Binding UID}"
+                                    BackgroundColor="#3F51B5"/>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>

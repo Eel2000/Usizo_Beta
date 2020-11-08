@@ -11,5 +11,6 @@ namespace Usizo_Beta.Services
     {
         Task<IEnumerable<Activite>> Activites();
         ObservableCollection<Activite> ListActivites();
+        Task<Activite> ActiviteDetails(string UID);
     }
 }
