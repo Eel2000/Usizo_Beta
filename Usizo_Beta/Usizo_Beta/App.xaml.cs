@@ -1,4 +1,5 @@
 ﻿using System;
+using Usizo_Beta.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace Usizo_Beta
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Activities());
         }
 
         protected override void OnStart()
