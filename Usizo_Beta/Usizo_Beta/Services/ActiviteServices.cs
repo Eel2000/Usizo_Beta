@@ -14,6 +14,17 @@ namespace Usizo_Beta.Services
     {
         FirebaseClient Firebase;
 
+        private ActiviteServices _activiteServices;
+        public ActiviteServices ActiviteService
+        {
+            get
+            {
+                if (_activiteServices == null)
+                    return _activiteServices = new ActiviteServices();
+                return _activiteServices;
+            }
+        }
+
         public ActiviteServices()
         {
             Firebase = new FirebaseClient("https://suivi-encadrement.firebaseio.com/");
