@@ -56,11 +56,11 @@ namespace Usizo_Beta.ViewModels
         public async Task NavigateToDetails(string id)
         {
             //await Task.Delay(5000);
-            var result = await ActiviteServices.ActiviteService.Activites();
+            var result = await ActiviteServices.ActiviteService.ActiviteDetails(id);
 
             try
             {
-                await _navigation.PushModalAsync(new DetailPage(id));
+                await _navigation.PushModalAsync(new DetailPage(result));
             }
             catch (Exception e)
             {

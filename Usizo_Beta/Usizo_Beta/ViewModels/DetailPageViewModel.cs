@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Usizo_Beta.Models;
 using Usizo_Beta.Services;
 using Xamarin.Forms;
@@ -19,18 +20,31 @@ namespace Usizo_Beta.ViewModels
             _navigation = navigation;
         }
 
-        public DetailPageViewModel(string activite)
+        public DetailPageViewModel(Activite activite)
         {
-            GetDetails(activite);
+            //GetDetails(activite.UID);
+            Nom = activite.Nom;
+            UID = activite.UID;
+            Lieu = activite.Lieu;
+            Encadreur = activite.Encadreur;
+            Date = activite.Date;
+            Enfants = activite.Enfants;
+
         }
 
-        public async void GetDetails(string id)
-        {
-            var result = await ActiviteServices.ActiviteService.ActiviteDetails(id);
-            Nom = result.Nom;
-            UID = result.UID;
+        //public async void GetDetails(string id)
+        //{
+        //    var result = await ActiviteServices.ActiviteService.ActiviteDetails(id);
+        //    Nom = result.Nom;
+        //    UID = result.UID;
 
-            Title = Nom;
-        }
+        //    Title = Nom;
+        //}
+
+        //private async Task<Activite> GetActivite(string id)
+        //{
+        //    var result = await ActiviteServices.ActiviteService.ActiviteDetails(id);
+        //    return result;
+        //}
     }
 }
