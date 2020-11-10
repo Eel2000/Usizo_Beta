@@ -31,7 +31,7 @@
                                     FontAttributes="Bold"
                                     Command="{Binding Source={x:Reference Page}, Path=BindingContext.GoToDetails}"
                                     CommandParameter="{Binding UID}"
-                                    BackgroundColor="#3F51B5"/>
+                                    BackgroundColor="#199DDD"/>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>

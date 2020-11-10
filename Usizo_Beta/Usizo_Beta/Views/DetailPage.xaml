@@ -9,7 +9,7 @@
         </Grid.RowDefinitions>
 
         <StackLayout WidthRequest="400"
-                     BackgroundColor="#3F51B5">
+                     BackgroundColor="#199DDD">
             <Label Text="{Binding Nom}"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"
@@ -25,8 +25,51 @@
                    FontAttributes="Italic"
                    Padding="5"/>
         </StackLayout>
-        <StackLayout Grid.Row="1">
-            
+        <StackLayout Grid.Row="1" Spacing="5">
+            <Frame Padding="10"
+                   CornerRadius="15"
+                   Margin="10,0,10,0"
+                   HasShadow="True">
+                <StackLayout Orientation="Vertical" 
+                             Spacing="5"
+                             Margin="5,0,5,0">
+                    <Label Text="Encadreur"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    <Label Text="{Binding Encadreur.Nom}"/>
+                    <Label Text="{Binding Encadreur.Phone}"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame CornerRadius="15"
+                   Margin="10,0,10,0">
+                <StackLayout>
+                    <Label Text="Details"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="Black"/>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Nombre d'enfants:"
+                               FontSize="16"/>
+                        <Label Text="{Binding NombreEnfant}"/>
+                        
+                        <Button HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="EndAndExpand"
+                                Text="Ajouter"
+                                CornerRadius="10"
+                                BackgroundColor="#199DDD"
+                                Command="{Binding AddChildrenCommand}"/>
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Lieu:"
+                               FontSize="16"/>
+                        <Label Text="{Binding Lieu}"/>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
         </StackLayout>
     </Grid>
 </ContentPage>
