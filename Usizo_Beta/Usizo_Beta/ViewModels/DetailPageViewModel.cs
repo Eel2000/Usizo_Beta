@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Usizo_Beta.Models;
+using Usizo_Beta.Services;
 using Xamarin.Forms;
 
 namespace Usizo_Beta.ViewModels
@@ -25,9 +26,9 @@ namespace Usizo_Beta.ViewModels
 
         public async void GetDetails(string id)
         {
-            var result = Usizo_Beta.Services.ActiviteServices.ActiviteService.ActiviteDetails(id);
-            Nom = result.Result.Nom;
-            UID = result.Result.UID;
+            var result = await ActiviteServices.ActiviteService.ActiviteDetails(id);
+            Nom = result.Nom;
+            UID = result.UID;
 
             Title = Nom;
         }

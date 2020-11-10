@@ -56,7 +56,7 @@ namespace Usizo_Beta.ViewModels
         public async Task NavigateToDetails(string id)
         {
             //await Task.Delay(5000);
-            var result = ActiviteServices.ActiviteService.Activites();
+            var result = await ActiviteServices.ActiviteService.Activites();
 
             try
             {
